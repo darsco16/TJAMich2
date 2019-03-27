@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:srcCompat="@drawable/logotjam" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <me.biubiubiu.justifytext.library.JustifyTextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="La justicia administrativa es una figura indispensable dentro del sistema jurídico mexicano, porque se deben someter a ella, todas las controversias de hecho y de derecho surgidas en torno a las actuaciones públicas sujetas al Derecho Administrativo.
+                La impartición de justicia administrativa en el Estado, por medio del Tribunal de Justicia Administrativa, será más eficaz, en razón de que corresponderá a este órgano, fungir en su aspecto jurisdiccional como una contraloría jurídica de los actos de la administración pública estatal y municipal, constituyéndose en suma, como un verdadero control de la legalidad a favor de los particulares.
+                El Tribunal tiene como objeto regular los actos y procedimientos administrativos entre el particular y las dependencias, entidades y organismos públicos desconcentrados del Poder Ejecutivo Estatal.
+                El Tribunal será competente para conocer y resolver en forma definitiva de las controversias que en juicio se promuevan en contra de los actos o resoluciones definitivos, dictados, ordenados, ejecutados o que se pretenda ejecutar, según corresponda, por el Poder Ejecutivo, de la Auditoría Superior de Michoacán, por los ayuntamientos, por los organismos autónomos, las entidades u organismos descentralizados o desconcentrados, estatales o municipales.
+                Es por esto y en apoyo con los avances tecnológicos que los que formamos parte del Tribunal estamos buscando acercar la información a todas las personas, instituciones u organizaciones que la requieren, por medio de esta página, en la cual se pretende difundir las sesiones públicas del Pleno del Tribunal.
+                En esta app encontrará información relacionada con los antecedentes del Tribunal, su organización y funcionamiento, elección de Magistrados, acuerdos, sentencias, legislación administrativa, enlaces al sitio de transparencia y acceso a la información pública, boletines de prensa, estadística, publicaciones y avisos de sesiones públicas, entre otros aspectos.
+                "
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
