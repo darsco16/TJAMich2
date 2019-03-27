@@ -41,10 +41,11 @@ public class MainActivity extends AppCompatActivity
 
     private ListView lvNota;
     private Adaptador adaptador;
-    ListView listaProducto;
+    private Adaptador adaptador2;
+    ListView listaProducto, listaDestacada;
     ProgressDialog pd;
 
-    String resultadoTotal;
+    String resultadoTotal, resultadoDestacadas;
 
     CarouselView customCarouselView;
 
@@ -161,6 +162,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_manual) {
 
+        } else if (id == R.id.nav_acerca) {
+            startActivity(new Intent(MainActivity.this, acerca_de.class));
+            return true;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -176,7 +180,7 @@ public class MainActivity extends AppCompatActivity
         URL url = null;
 
         try{
-            url = new URL("http://tjamich.gob.mx/newstjam.php");
+            url = new URL("http://tjamich.gob.mx/newstjam2.php");
 
             HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
             respuesta = conexion.getResponseCode();
@@ -252,4 +256,5 @@ public class MainActivity extends AppCompatActivity
         pd = ProgressDialog.show(this, "Cargando las noticias", "Espere por favor...", true, false);
         new HiloCargarImagen().execute();
     }
+
 }
