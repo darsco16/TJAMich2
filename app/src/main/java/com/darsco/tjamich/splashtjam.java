@@ -6,7 +6,10 @@ import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Surface;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class splashtjam extends Activity {
 
@@ -27,6 +30,15 @@ public class splashtjam extends Activity {
                 finish();
             };
         }, DURACION_SPLASH);
+
+        int rotacion = getWindowManager().getDefaultDisplay().getRotation();
+        if (rotacion == Surface.ROTATION_0 || rotacion == Surface.ROTATION_180) {
+            LinearLayout ll = (LinearLayout)findViewById(R.id.fondoRelative);
+            ll.setBackgroundResource(R.drawable.fondov);
+        } else {
+            LinearLayout ll = (LinearLayout)findViewById(R.id.fondoRelative);
+            ll.setBackgroundResource(R.drawable.fondoh);
+        }
     }
 }
 

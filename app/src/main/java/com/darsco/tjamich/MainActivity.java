@@ -159,10 +159,12 @@ public class MainActivity extends AppCompatActivity
             Uri uri = Uri.parse("http://tjamich.gob.mx/Listas-de-Acuerdos");
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_locate) {
 
         } else if (id == R.id.nav_manual) {
-
+            Uri uri = Uri.parse("https://www.youtube.com/user/TJAMICH");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         } else if (id == R.id.nav_acerca) {
             startActivity(new Intent(MainActivity.this, acerca_de.class));
             return true;

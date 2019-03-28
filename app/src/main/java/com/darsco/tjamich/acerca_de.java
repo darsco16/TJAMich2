@@ -1,15 +1,20 @@
 package com.darsco.tjamich;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class acerca_de extends AppCompatActivity {
 
@@ -28,6 +33,14 @@ public class acerca_de extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+        int rotacion = getWindowManager().getDefaultDisplay().getRotation();
+        if (rotacion == Surface.ROTATION_0 || rotacion == Surface.ROTATION_180) {
+            LinearLayout ll = (LinearLayout)findViewById(R.id.fondoLinear);
+            ll.setBackgroundResource(R.drawable.fondov);
+        } else {
+            LinearLayout ll = (LinearLayout)findViewById(R.id.fondoLinear);
+            ll.setBackgroundResource(R.drawable.fondoh);
+        }
     }
 
 }

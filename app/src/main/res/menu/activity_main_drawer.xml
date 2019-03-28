@@ -26,9 +26,9 @@
         <menu>
             <group >
                 <item
-                    android:id="@+id/nav_share"
+                    android:id="@+id/nav_locate"
                     android:icon="@drawable/ubicanos"
-                    android:title="Contactanos" />
+                    android:title="Ubicanos" />
                 <item
                     android:id="@+id/nav_manual"
                     android:icon="@drawable/help"
