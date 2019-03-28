@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".aviso_tjam">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Aviso de Privacidad"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <me.biubiubiu.justifytext.library.JustifyTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:text="I. Responsable de la protección de sus datos personales
+        \nLas áreas del Tribunal de Justicia Administrativa de Michoacán de Ocampo, a quienes les sea turnada solicitud de información y/o protección de datos personales, son responsables del tratamiento y protección de su información confidencial.
+        \nLo anterior conforme a lo establecido por la Ley de Transparencia, Acceso a la Información Pública y Protección de Datos Personales del Estado de Michoacán, en su artículo sexto transitorio.
+        \nII. ¿Para qué fines recabamos y utilizamos sus datos personales?
+        \nLas finalidades del tratamiento de sus datos personales son:
+        \nEstadísticos; y,
+        \nPara la atención de trámites y/o servicios solicitados por el titular de los datos personales o su representante legal.
+        \nIII. ¿Qué datos personales obtenemos?
+        \nPara cumplir las finalidades anteriores requerimos dependiendo del procedimiento o actividad a realizar de los siguientes datos personales:
+        \na.	De identificación:
+        \nNombre(s), Apellidos, o Alias, Edad, Sexo, Ciudad, Estado, Firma y/o huella digital, Número de Identificación oficial (Cédula, pasaporte, Identificación para votar, entre otras), fecha de nacimiento, CURP, RFC, entre otros.
+        \nb.	Datos de contacto:
+        \nCorreo electrónico y/o Domicilio ambos para oír y recibir notificaciones.
+        \nUsted tiene la facultad de determinar si los entrega o no.
+        \nIV. Mecanismos de seguridad
+        \nLas áreas del Tribunal de Justicia Administrativa de Michoacán de Ocampo emplean procedimientos físicos, electrónicos y administrativos para prevenir el acceso no autorizado, mantener la exactitud de los datos, y garantizar el uso correcto de su información personal.
+        \nV. ¿Cómo Acceder, Rectificar, Cancelar u Oponerse al uso y tratamiento de sus datos personales (Derechos ARCO) o revocar su consentimiento para el tratamiento sus datos?
+        \nUsted tiene derecho de acceso, rectificación, cancelación u oposición al tratamiento de sus datos personales o revocar el consentimiento. Para el ejercicio de estos derechos el titular de los datos personales o su representante deberán presentar solicitud de ejercicio de derechos ARCO, misma que podrá ser presentada en formato libre siempre que reúna los siguientes requisitos:
+        \nAcreditar que es el titular de los datos personales ante la autoridad a la que se dirige la solicitud.
+        \nNombre, datos generales e identificación oficial del solicitante, o en su defecto poder otorgado por el titular de los datos personales.
+        \nPrecisión de los datos respecto de los que busca ejercer alguno de los derechos ARCO (Acceso, Rectificación, Cancelación y Oposición).
+        \nDomicilio para recibir notificaciones y/o correo electrónico.
+        \nModalidad en la que prefiere se le otorgue el acceso a sus datos (verbalmente, mediante consulta directa, a través de documentos como copias simples, certificadas u otros).
+        \nAlgún elemento que facilite la localización de la información.
+        \nFirma del solicitante.
+        \nLe informamos que puede presentar su solicitud de protección de datos personales vía electrónica al correo unidaddetransparencia@tjamich.gob.mx o bien puede acudir directamente a las oficinas de la Ventanilla de Acceso a la Información, ubicadas en Av Francisco I. Madero Poniente N° 1622, Colonia Nueva Valladolid, Morelia, Michoacán, o a las oficinas de la defensoría jurídica, en un horario de lunes a viernes de 9:00 a 15:00 horas.
+        \nVI. Transferencia de datos personales
+        \nLe informamos que sólo excepcionalmente sus datos personales serán transferidos en los siguientes casos:
+        \nLos datos personales contenidos en los expedientes de solicitudes de información, solicitudes de protección de datos personales o recursos de revisión, podrán ser transferidos en los términos de la Ley de Transparencia, Acceso a la Información Pública y Protección de Datos Personales, al Instituto Michoacano de Transparencia, Acceso a la Información Pública y Protección de Datos Personales para la substanciación del recurso de revisión.
+        \nExcepcionalmente y a solicitud de autoridad competente también serán remitidos a ésta previo requerimiento fundado y motivado.
+        \nVII. Modificaciones al aviso de privacidad
+        \nLas áreas del Tribunal de Justicia Administrativa de Michoacán de Ocampo, le notificarán de cualquier cambio al aviso de privacidad mediante comunicados que se publicaran a través de nuestro portal de transparencia:
+        " />
+
+            <TextView
+                android:id="@+id/txtAviso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="textStart"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnRegresar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPrimary"
+                android:text="Regresar"
+                android:textColor="@android:color/background_light"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

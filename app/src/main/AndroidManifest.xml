@@ -16,8 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".acerca_de"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".aviso_tjam"
+            android:label="Aviso de Privacidad"
+            android:parentActivityName=".acerca_de" />
+        <activity
+            android:name=".acerca_de"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".tjam"
             android:label="El Tribunal"

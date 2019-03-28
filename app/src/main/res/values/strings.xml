@@ -18,8 +18,10 @@
     <string name="error_field_required">Este campo es requerido</string>
     <string name="permission_rationale">"Se requiere permiso para acceder a sus contactos."
     </string>
-
     <string name="title_activity_acerca_de">Acerca de la Aplicación</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

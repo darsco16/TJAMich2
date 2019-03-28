@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:text="Versión de la aplicación "
                 android:textAlignment="textEnd"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -67,7 +68,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnAviso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="55dp"
