@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.text.HtmlCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -190,6 +191,7 @@ public class MainActivity extends AppCompatActivity
             if(respuesta == HttpURLConnection.HTTP_OK){
 
                 InputStream inputStream = new BufferedInputStream(conexion.getInputStream());
+
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
                 while((linea = bufferedReader.readLine()) != null){
