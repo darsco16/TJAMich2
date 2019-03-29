@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity
     CarouselView customCarouselView;
 
     int[] sampleImages = {R.drawable.nota1, R.drawable.nota2, R.drawable.nota3, R.drawable.nota4, R.drawable.nota5};
-    String[] sampleTitles = {"Colegio de Contadores Públicos buscan conocer más sobre el Sistema Estatal Anticorrupción", "Comunicado Oficial", "Mujeres juegan un papel vital en la impartición de justicia administrativa; Sergio Mecino", "El Tribunal de Justicia Administrativa y el Colegio de Contadores acuerdan trabajos de colaboración", "La defensa jurídica gratuita es un derecho de todos los ciudadanos"};
+    String[] sampleTitles = {"A diez años de su creación el TJAM se fortalece y sigue evolucionado; Araceli Pineda", "El derecho administrativo ha evolucionado para bien de los particulares; Arturo Bucio", "Colegio de Contadores Públicos buscan conocer más sobre el Sistema Estatal Anticorrupción", "Comunicado Oficial", "Mujeres juegan un papel vital en la impartición de justicia administrativa; Sergio Mecino"};
 
 
     @Override
