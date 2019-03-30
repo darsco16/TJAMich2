@@ -19,6 +19,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -44,7 +45,11 @@ public class login_jel extends AppCompatActivity implements LoaderCallbacks<Curs
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
-
+    DBHelper helper = new DBHelper(this);
+    EditText usuario, contrasena;
+    TextView registro;
+    String idUsuario;
+    CardView ingresar;
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
@@ -111,6 +116,42 @@ public class login_jel extends AppCompatActivity implements LoaderCallbacks<Curs
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), register_jel.class);
                 startActivityForResult(intent, 0);
+            }
+        });
+        usuario = (EditText) findViewById(R.id.email);
+        contrasena = (EditText) findViewById(R.id.password);
+        //ingresar = (CardView) findViewById(R.id.email_sign_in_button);
+        registro = (TextView) findViewById(R.id.btnRegister);
+        usuario.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View arg0, boolean gotfocus) {
+                // TODO Auto-generated method stub
+                if(gotfocus){
+                    usuario.setCompoundDrawables(null, null, null, null);
+                }
+                else if(!gotfocus){
+                    if(usuario.getText().length()==0)
+                        usuario.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_action_user, 0, 0, 0);
+                }
+
+
+            }
+        });
+        contrasena.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View arg0, boolean gotfocus) {
+                // TODO Auto-generated method stub
+                if(gotfocus){
+                    contrasena.setCompoundDrawables(null, null, null, null);
+                }
+                else if(!gotfocus){
+                    if(contrasena.getText().length()==0)
+                        contrasena.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_action_pass, 0, 0, 0);
+                }
+
+
             }
         });
     }

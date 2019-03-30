@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Nota: "+ position, Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
     // To set custom views

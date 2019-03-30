@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.ProgressDialog;
 
@@ -36,6 +37,7 @@ public class forgot_jel extends AppCompatActivity {
     private EditText txtEmail = null;
     private Button recoveryButton = null;
     private ProgressDialog progressDialog = null;
+    TextView registro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,24 @@ public class forgot_jel extends AppCompatActivity {
         setContentView(R.layout.activity_forgot_jel);
 
         initControls();
+        registro = (EditText) findViewById(R.id.txtemail);
+
+        registro.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View arg0, boolean gotfocus) {
+                // TODO Auto-generated method stub
+                if(gotfocus){
+                    registro.setCompoundDrawables(null, null, null, null);
+                }
+                else if(!gotfocus){
+                    if(registro.getText().length()==0)
+                        registro.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_action_user, 0, 0, 0);
+                }
+
+
+            }
+        });
 
         recoveryButton.setOnClickListener(new View.OnClickListener() {
             @Override

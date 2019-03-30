@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -25,12 +26,33 @@ public class register_jel extends AppCompatActivity {
     private EditText txtEmail = null;
     private Button registerButton = null;
     private ProgressDialog progressDialog = null;
+    TextView registro;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_jel);
 
         initControls();
+
+        registro = (EditText) findViewById(R.id.txtEmail);
+
+        registro.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View arg0, boolean gotfocus) {
+                // TODO Auto-generated method stub
+                if(gotfocus){
+                    registro.setCompoundDrawables(null, null, null, null);
+                }
+                else if(!gotfocus){
+                    if(registro.getText().length()==0)
+                        registro.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_action_user, 0, 0, 0);
+                }
+
+
+            }
+        });
 
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
