@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".contacto_tjam">
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/nav_header_title"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Av. Francisco I. Madero Poniente 1622\n Col. Nueva Valladolid, C.P. 58190\n Morelia Michoacán"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnFace"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/fb" />
+
+        <Button
+            android:id="@+id/btnTwit"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/twitter" />
+
+        <Button
+            android:id="@+id/btnYout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/yt" />
+
+        <Button
+            android:id="@+id/btnSendmail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/arro"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

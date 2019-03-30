@@ -160,7 +160,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         } else if (id == R.id.nav_locate) {
-
+            startActivity(new Intent(MainActivity.this, contacto_tjam.class));
+            return true;
         } else if (id == R.id.nav_manual) {
             Uri uri = Uri.parse("https://www.youtube.com/user/TJAMICH");
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);

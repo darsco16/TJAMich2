@@ -16,7 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".aviso_tjam"
+        <activity android:name=".contacto_tjam"
+            android:label="Contactanos"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".aviso_tjam"
             android:label="Aviso de Privacidad"
             android:parentActivityName=".acerca_de" />
         <activity
