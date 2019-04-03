@@ -1,7 +1,12 @@
 package com.darsco.tjamich;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -72,7 +77,9 @@ public class MainActivity extends AppCompatActivity
 
         listaProducto = (ListView) findViewById(R.id.lvNotas);
 
-        EjecutarTodo();
+        if(isOnline()){
+            EjecutarTodo();
+        }
 
         customCarouselView = (CarouselView) findViewById(R.id.customCarouselView);
         customCarouselView.setPageCount(sampleImages.length);
@@ -89,6 +96,30 @@ public class MainActivity extends AppCompatActivity
         });
 
 
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnected()) {
+            return true;
+        }
+        showAlertDialog(MainActivity.this, "Conexion a Internet",
+                "Tu dispositivo no tiene conexión a internet, es posible que algunas funciones no estén disponibles.", false);
+        return false;
+    }
+
+    public void showAlertDialog(Context context, String title, String message, Boolean status) {
+        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(message);
+        alertDialog.setIcon((status) ? R.drawable.success : R.drawable.fail);
+        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alertDialog.show();
     }
 
     // To set custom views

@@ -61,4 +61,21 @@
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Como llegar"
+        android:textAlignment="center"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/btnMaps"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/maps"
+        android:elevation="@dimen/default_circle_indicator_stroke_width" />
 </LinearLayout>

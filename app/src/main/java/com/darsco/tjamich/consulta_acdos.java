@@ -1,7 +1,11 @@
 package com.darsco.tjamich;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,20 +64,45 @@ public class consulta_acdos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //String consulta = "http://tjamich.gob.mx/consultarAcdos.php?accion=acdos&expediente="+etExpediente.getText();
-                String consulta2 = "http://tjamich.gob.mx/consultarAcdos.php?accion=exp&expediente="+etExpediente.getText();
-                String consulta3 = "http://tjamich.gob.mx/consultarAcdos.php?accion=area&expediente="+etExpediente.getText();
-                //EnviarRecibirAcdos(consulta);
-                EnviarRecibirExp(consulta2);
-                EnviarRecibirArea(consulta3);
-                EjecutarTodo();
-                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(btnBuscarAcdos.getWindowToken(), 0);
-                etExpediente.setText("");
+                if(isOnline()) {
+                    //String consulta = "http://tjamich.gob.mx/consultarAcdos.php?accion=acdos&expediente="+etExpediente.getText();
+                    String consulta2 = "http://tjamich.gob.mx/consultarAcdos.php?accion=exp&expediente=" + etExpediente.getText();
+                    String consulta3 = "http://tjamich.gob.mx/consultarAcdos.php?accion=area&expediente=" + etExpediente.getText();
+                    EnviarRecibirExp(consulta2);
+                    EnviarRecibirArea(consulta3);
+                    EjecutarTodo();
+                }
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(btnBuscarAcdos.getWindowToken(), 0);
+                    etExpediente.setText("");
+
             }
         });
     }
 
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnected()) {
+            return true;
+        }
+        showAlertDialog(consulta_acdos.this, "Conexion a Internet",
+                "Tu dispositivo no tiene conexión a internet, los acuerdos no se podrán visualizar.", false);
+        return false;
+    }
+
+    public void showAlertDialog(Context context, String title, String message, Boolean status) {
+        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(message);
+        alertDialog.setIcon((status) ? R.drawable.success : R.drawable.fail);
+        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alertDialog.show();
+    }
     public void EnviarRecibirArea(String URL){
         //Toast.makeText(getApplicationContext(), ""+URL, Toast.LENGTH_SHORT).show();
         RequestQueue queue = Volley.newRequestQueue(this);

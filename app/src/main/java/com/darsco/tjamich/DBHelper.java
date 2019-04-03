@@ -55,7 +55,7 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         //CREAR LAS TABLAS DE:
-        db.execSQL("CREATE TABLE usuario(id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nombre TEXT NOT NULL, nombreusuario TEXT NOT NULL, contrasena TEXT NOT NULL, correo TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE usuariotjam(id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, usuario TEXT NOT NULL, contrasena TEXT NOT NULL)");
 
 
     }
@@ -63,20 +63,18 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXISTS " + "usuario");
+        db.execSQL("DROP TABLE IF EXISTS " + "usuariotjam");
 
         onCreate(db);
     }
 
     //INICIO INSERT
-    public void insertUsuario(String nombre, String nombreUsuario, String contrasena, String correo){
+    public void insertUsuario(String usuario, String contrasena){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues valores = new ContentValues();
-        valores.put("nombre", nombre);
-        valores.put("nombreusuario", nombreUsuario);
+        valores.put("usuario", usuario);
         valores.put("contrasena", contrasena);
-        valores.put("correo", correo);
-        db.insert("usuario", null, valores);
+        db.insert("usuariotjam", null, valores);
     }
 
 
@@ -100,13 +98,13 @@ public class DBHelper extends SQLiteOpenHelper{
 
     public Cursor consultarContrasena(String u, String c) throws SQLException{
         SQLiteDatabase db = getReadableDatabase();
-        Cursor res =  db.rawQuery( "select contrasena from usuario where id_usuario='"+u+"' and contrasena='"+c+"'", null );
+        Cursor res =  db.rawQuery( "select contrasena from usuariotjam where id_usuario='"+u+"' and contrasena='"+c+"'", null );
         return res;
     }
     //Obtener id de usuario
     public Cursor getId(String usu, String pass) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor res =  db.rawQuery( "select id_usuario from usuario where nombre='"+usu+"' and contrasena='"+pass+"'", null );
+        Cursor res =  db.rawQuery( "select id_usuario from usuariotjam where nombre='"+usu+"' and contrasena='"+pass+"'", null );
         return res;
     }
 

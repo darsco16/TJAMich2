@@ -71,5 +71,15 @@ public class contacto_tjam extends AppCompatActivity {
                 contacto_tjam.this.startActivity(Intent.createChooser(emailIntent, null));
             }
         });
+
+        Button btn5 = (Button) findViewById(R.id.btnMaps);
+        btn5.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), maps_tjam.class);
+                startActivityForResult(intent, 0);
+            }
+        });
     }
 }
