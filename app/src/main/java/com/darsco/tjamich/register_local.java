@@ -3,6 +3,7 @@ package com.darsco.tjamich;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -30,8 +31,7 @@ public class register_local extends AppCompatActivity {
         guardarLocal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        guardarLocal.setVisibility(View.GONE);
-        registroLocal();
+                registroLocal();
             }
         });
         BLista.setOnClickListener(new View.OnClickListener() {
@@ -62,12 +62,14 @@ public class register_local extends AppCompatActivity {
             focusView = correo;
             cancel = true;
         }else{
-            /*try {
-                helper.abrir();
-                Cursor cursor = helper.alreadyExist(user);
-                if (cursor.getCount() > 0) {
-                    Toast.makeText(this, "Ya existe este usuario", Toast.LENGTH_SHORT).show();
-                } else {*/
+            helper.abrir();
+            if(!user.isEmpty()){
+                Cursor cursor = helper.consultarUsuario(user, email);
+                if (cursor.moveToFirst()){
+                    Toast.makeText(this, "El usuario o correo ya existe", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(), register_local.class);
+                    startActivity(i);
+                }else{
                     int id = 0;
                     helper.abrir();
                     helper.insertUsuario(nom, user, contra, email);
@@ -76,6 +78,32 @@ public class register_local extends AppCompatActivity {
                     Toast.makeText(register_local.this, "Registro exitoso", Toast.LENGTH_LONG).show();
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i);
+                }
+            }
+            helper.cerrar();
+            /*try {
+                helper.abrir();
+                Cursor cursor = helper.alreadyExist(user);
+                if (cursor.getCount() > 0) {
+                    Toast.makeText(this, "Ya existe este usuario", Toast.LENGTH_SHORT).show();
+                } else {*/
+            /*int exis;
+            DBHelper db = new DBHelper(getApplicationContext());
+            exis=db.alreadyExist(user);
+            if (exis == 1){
+                Toast.makeText(this, "Ya existe este usuario", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }else {
+                int id = 0;
+                helper.abrir();
+                helper.insertUsuario(nom, user, contra, email);
+                helper.cerrar();
+
+                Toast.makeText(register_local.this, "Registro exitoso", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }*/
                 /*}
                 helper.cerrar();
             } catch (SQLException e) {

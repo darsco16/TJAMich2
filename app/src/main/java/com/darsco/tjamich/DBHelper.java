@@ -95,7 +95,7 @@ public class DBHelper extends SQLiteOpenHelper{
         Cursor cursor = null;
         cursor = this.getReadableDatabase().query("usuariotjam", new String[]{"id_usuario",
                         "nombre","nombreUsuario","contrasena","correo"},
-                "nombreUsuario like '"+u+"' and contrasena like '"+c+"'",
+                "nombreUsuario like '"+u+"' or correo like '"+c+"'",
                 null, null, null, null );
         return cursor;
     }
@@ -223,8 +223,20 @@ public class DBHelper extends SQLiteOpenHelper{
         /*SQLiteDatabase sql = this.getReadableDatabase();
         Cursor fila = sql.rawQuery("select nombreUsuario from usuariotjam where nombreUsuario=" + user, null);
         return fila;*/
+        /*SQLiteDatabase db = getReadableDatabase();
+        int exis = 0;
+        if(!user.isEmpty()) {
+            Cursor fila = db.rawQuery("select nombreUsuario from usuariotjam where nombreUsuario=" + user, null);
+            if (fila.moveToFirst()) {
+                exis=1;
+            }else{
+                exis=0;
+            }
+        }
+        return exis;*/
         SQLiteDatabase db = getReadableDatabase();
-        Cursor res =  db.rawQuery( "select nombreUsuario from usuariotjam where nombreUsuario="+user, null );
+        Cursor res =  db.rawQuery( "select nombreusuario From usuariotjam where nombreusuario='"+user+"')", null );
+        //Cursor res =  db.rawQuery( "select nombreUsuario from usuariotjam where nombreUsuario="+user, null );
         return res;
     }
 
