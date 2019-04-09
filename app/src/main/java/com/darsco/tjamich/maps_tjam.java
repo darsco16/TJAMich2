@@ -1,5 +1,6 @@
 package com.darsco.tjamich;
 
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -46,9 +47,10 @@ public class maps_tjam extends FragmentActivity implements OnMapReadyCallback {
         uiSettings.setZoomControlsEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        LatLng tjam = new LatLng(19.7018056, -101.210626);
-        mMap.addMarker(new MarkerOptions().position(tjam).title("TJAM").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
-        float zoomlevel=16;
+        LatLng tjam = new LatLng(19.7017382, -101.2102083);
+        //mMap.addMarker(new MarkerOptions().position(tjam).title("TJAM").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+        mMap.addMarker(new MarkerOptions().position(tjam).title("TJAM").icon(BitmapDescriptorFactory.fromResource(R.drawable.mark)));
+        float zoomlevel=20;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tjam, zoomlevel));
     }
 }

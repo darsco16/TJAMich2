@@ -69,7 +69,10 @@
         android:layout_marginTop="25dp"
         android:text="Como llegar"
         android:textAlignment="center"
-        android:textColor="@android:color/black" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnMaps"

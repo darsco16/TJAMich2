@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -28,6 +29,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -67,6 +69,8 @@ public class login_jel extends AppCompatActivity implements LoaderCallbacks<Curs
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    public CheckBox ch;
+    public static final String MY_PREFS_NAME = "user_pass_pref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +79,7 @@ public class login_jel extends AppCompatActivity implements LoaderCallbacks<Curs
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
-
+        ch = (CheckBox)findViewById(R.id.chkRemind);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -92,9 +96,26 @@ public class login_jel extends AppCompatActivity implements LoaderCallbacks<Curs
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*if(login_jel.this.ch.isChecked())
+                {
+                    // guardas el usuario y contraseña cuando se haya hecho clic sobre el boton
+                    SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                    editor.putString("username", login_jel.this.mEmailView.getText().toString());
+                    editor.putString("password1", login_jel.this.mPasswordView.getText().toString());
+                    editor.apply();
+                }*/
                 attemptLogin();
             }
         });
+
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        String restoredText = prefs.getString("text", null);
+        if (restoredText != null) {
+            String name = prefs.getString("username", "");
+            String password = prefs.getString("password", "");
+            mEmailView.setText(name);
+            mPasswordView.setText(password);
+        }
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
@@ -115,6 +136,16 @@ public class login_jel extends AppCompatActivity implements LoaderCallbacks<Curs
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), register_jel.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+        Button btn3 = (Button) findViewById(R.id.btnRegisterLocal);
+        btn3.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), register_local.class);
                 startActivityForResult(intent, 0);
             }
         });
@@ -233,11 +264,11 @@ public class login_jel extends AppCompatActivity implements LoaderCallbacks<Curs
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        } /*else if (!isEmailValid(email)) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
-        }
+        }*/
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -252,10 +283,10 @@ public class login_jel extends AppCompatActivity implements LoaderCallbacks<Curs
         }
     }
 
-    private boolean isEmailValid(String email) {
+    /*private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
         return email.contains("@");
-    }
+    }*/
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic

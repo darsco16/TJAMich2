@@ -45,4 +45,5 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/background_light"
         android:textStyle="bold" />
+
 </LinearLayout>

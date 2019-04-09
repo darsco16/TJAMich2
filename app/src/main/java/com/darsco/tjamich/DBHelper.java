@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
+import android.util.Log;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -55,8 +57,8 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         //CREAR LAS TABLAS DE:
-        db.execSQL("CREATE TABLE usuariotjam(id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, usuario TEXT NOT NULL, contrasena TEXT NOT NULL)");
-
+        //db.execSQL("CREATE TABLE usuariotjam(id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, usuario TEXT NOT NULL, contrasena TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE usuariotjam(id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nombre TEXT NOT NULL, nombreusuario TEXT NOT NULL, contrasena TEXT NOT NULL, correo TEXT NOT NULL)");
 
     }
 
@@ -69,11 +71,13 @@ public class DBHelper extends SQLiteOpenHelper{
     }
 
     //INICIO INSERT
-    public void insertUsuario(String usuario, String contrasena){
+    public void insertUsuario(String nombre, String nombreUsuario, String contrasena, String correo){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues valores = new ContentValues();
-        valores.put("usuario", usuario);
+        valores.put("nombre", nombre);
+        valores.put("nombreusuario", nombreUsuario);
         valores.put("contrasena", contrasena);
+        valores.put("correo", correo);
         db.insert("usuariotjam", null, valores);
     }
 
@@ -89,7 +93,7 @@ public class DBHelper extends SQLiteOpenHelper{
     //Consultar usuario en la base
     public Cursor consultarUsuario(String u, String c) throws SQLException{
         Cursor cursor = null;
-        cursor = this.getReadableDatabase().query("usuario", new String[]{"id_usuario",
+        cursor = this.getReadableDatabase().query("usuariotjam", new String[]{"id_usuario",
                         "nombre","nombreUsuario","contrasena","correo"},
                 "nombreUsuario like '"+u+"' and contrasena like '"+c+"'",
                 null, null, null, null );
@@ -139,7 +143,7 @@ public class DBHelper extends SQLiteOpenHelper{
             values.put("nombreusuario", usuario);
             values.put("contrasena", contra);
             values.put("correo" , correo);
-            filasAfectadas = (int)db.update("usuario", values, "id_usuario = '"+id+"'", null);
+            filasAfectadas = (int)db.update("usuariotjam", values, "id_usuario = '"+id+"'", null);
         }
         db.close();
         return  filasAfectadas;
@@ -190,7 +194,19 @@ public class DBHelper extends SQLiteOpenHelper{
 
     }
 
+    public ArrayList llenar_lv(){
+        ArrayList<String> lista = new ArrayList<>();
+        SQLiteDatabase database = this.getWritableDatabase();
+        String q = "SELECT * FROM usuariotjam";
+        Cursor registros = database.rawQuery(q,null);
+        if(registros.moveToFirst()){
+            do{
+                lista.add(registros.getString(1));
+            }while(registros.moveToNext());
+        }
+        return lista;
 
+    }
 
     public Cursor prueba(String idUs){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -203,5 +219,13 @@ public class DBHelper extends SQLiteOpenHelper{
         return cursor;
     }
 
+    public Cursor alreadyExist (String user){
+        /*SQLiteDatabase sql = this.getReadableDatabase();
+        Cursor fila = sql.rawQuery("select nombreUsuario from usuariotjam where nombreUsuario=" + user, null);
+        return fila;*/
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor res =  db.rawQuery( "select nombreUsuario from usuariotjam where nombreUsuario="+user, null );
+        return res;
+    }
 
 }
