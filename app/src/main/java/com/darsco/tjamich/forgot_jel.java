@@ -3,7 +3,7 @@ package com.darsco.tjamich;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.UserManager;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -14,6 +14,8 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.ProgressDialog;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.darsco.tjamich.R;
 import com.google.gson.Gson;

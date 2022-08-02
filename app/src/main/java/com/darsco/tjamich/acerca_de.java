@@ -1,10 +1,10 @@
 package com.darsco.tjamich;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+/*import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;*/
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Surface;
@@ -15,6 +15,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class acerca_de extends AppCompatActivity {
 

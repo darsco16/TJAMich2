@@ -2,7 +2,7 @@ package com.darsco.tjamich;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.text.HtmlCompat;
+//import android.support.v4.text.HtmlCompat;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;

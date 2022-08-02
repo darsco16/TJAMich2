@@ -5,7 +5,7 @@ import retrofit2.Retrofit;
 
 public class UserManager {
 
-    private static String baseUrl = "http://jel.euteco.com.mx/";
+    private static String baseUrl = "https://jel.tjamich.gob.mx/";
 
     public static UserManagerInterface getUserManagerService(Converter.Factory converterFactory)
     {
