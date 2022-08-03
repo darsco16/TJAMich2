@@ -59,46 +59,56 @@ public class register_jel extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showProgressDialog();
-                String emailValue = txtEmail.getText().toString();
-                // Create Gson converter to convert returned JSON string.
-                GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create();
-                // Get call object.
-                Call<UserDTO> call = com.darsco.tjamich.UserManager.getUserManagerService(gsonConverterFactory).getRegister(emailValue);
-                retrofit2.Callback<UserDTO> callback = new Callback<UserDTO>() {
-                    @Override
-                    public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
-                        hideProgressDialog();
-                        try {
-                            if (response.isSuccessful()) {
-                                UserDTO userDto = response.body();
-                                Toast.makeText(getApplicationContext(), "Se ha enviado un correo a su bandeja para continuar con su registro", Toast.LENGTH_LONG).show();
-                                List<UserDTO> userDtoList = new ArrayList<UserDTO>();
-                                userDtoList.add(userDto);
-                                //showUserInfoInListView(userDtoList);
-                            } else {
-                                String errorMessage = response.errorBody().string();
-                                Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
+                if (!txtEmail.getText().toString().isEmpty() && isEmailValid(txtEmail.getText().toString())) {
+                    showProgressDialog();
+                    String emailValue = txtEmail.getText().toString();
+                    // Create Gson converter to convert returned JSON string.
+                    GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create();
+                    // Get call object.
+                    Call<UserDTO> call = com.darsco.tjamich.UserManager.getUserManagerService(gsonConverterFactory).getRegister(emailValue);
+                    // Create a Callback object.
+                    retrofit2.Callback<UserDTO> callback = new Callback<UserDTO>() {
+                        @Override
+                        public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
+                            UserDTO userDto = response.body();
+                            hideProgressDialog();
+                            try {
+                                if (response.isSuccessful()) {
+                                    if (userDto.getData() != null) {
+                                        Toast.makeText(getApplicationContext(), "Se ha enviado un correo a su bandeja para continuar con su registro", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "El E-mail proporcionado ya se encuentra registrado.", Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    String errorMessage = response.errorBody().string();
+                                    Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
+                                }
+                            }catch(IOException ex)
+                            {
+                                Log.e(TAG_RETROFIT_GET_POST, ex.getMessage());
                             }
-                        }catch(IOException ex)
-                        {
-                            Log.e(TAG_RETROFIT_GET_POST, ex.getMessage());
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<UserDTO> call, Throwable t) {
-                        hideProgressDialog();
-                        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                };
-                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(registerButton.getWindowToken(), 0);
-                txtEmail.setText("");
-                // Send request to web server and let callback to process the response.
-                call.enqueue(callback);
+                        @Override
+                        public void onFailure(Call<UserDTO> call, Throwable t) {
+                            hideProgressDialog();
+                            Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    };
+                    InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(registerButton.getWindowToken(), 0);
+                    txtEmail.setText("");
+                    // Send request to web server and let callback to process the response.
+                    call.enqueue(callback);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Se requiere un Email válido para continuar.", Toast.LENGTH_LONG).show();
+                }
             }
         });
+    }
+
+    private boolean isEmailValid(String email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     /* Initialize all UI controls. */

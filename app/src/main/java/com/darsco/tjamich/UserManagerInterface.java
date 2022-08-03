@@ -21,7 +21,7 @@ public interface UserManagerInterface {
      * @Field("form_field_name") : Indicate the form filed name, the filed value will be assigned to input parameter userNameValue.
      * */
     @Headers({"Accept: application/json"})
-    @POST("ApiSIL/Account/SubscribeEmail")
+    @POST("ApiJel/Account/SubscribeEmail")
     Call<UserDTO> getRegister(@Body String emailValue);
 
     /*
@@ -30,7 +30,8 @@ public interface UserManagerInterface {
      *  assign the parsed out value to userNameValue parameter.
      * */
     @Headers({"Accept: application/json"})
-    @POST("ApiSIL/Account/RecoverPassword")
+    @POST("ApiJel/Account/RecoverPassword")
+    //@POST("darscoAccount/RecoveryPassw")
     Call<UserDTO> getUserByName(@Body String emailValue);
 
     /*

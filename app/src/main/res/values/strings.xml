@@ -25,4 +25,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps_tjam">Map</string>
+    <string name="api_map_token">AIzaSyDPNOUS9T1plZdP4Oa-7Yk9it25tDvSOBs</string>
 </resources>

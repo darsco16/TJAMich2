@@ -1,11 +1,8 @@
 package com.darsco.tjamich;
 
 import android.graphics.drawable.BitmapDrawable;
-//import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-
 import androidx.fragment.app.FragmentActivity;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -42,17 +39,17 @@ public class maps_tjam extends FragmentActivity implements OnMapReadyCallback {
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        UiSettings uiSettings = mMap.getUiSettings();
+        UiSettings uiSettings = googleMap.getUiSettings();
         uiSettings.setZoomControlsEnabled(true);
+        uiSettings.isMyLocationButtonEnabled();
 
-        // Add a marker in Sydney and move the camera
         LatLng tjam = new LatLng(19.7017382, -101.2102083);
         //mMap.addMarker(new MarkerOptions().position(tjam).title("TJAM").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-        mMap.addMarker(new MarkerOptions().position(tjam).title("TJAM").icon(BitmapDescriptorFactory.fromResource(R.drawable.mark)));
-        float zoomlevel=20;
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tjam, zoomlevel));
+        googleMap.addMarker(new MarkerOptions().position(tjam).title("TJAM").icon(BitmapDescriptorFactory.fromResource(R.drawable.mark)));
+        float zoomlevel=18;
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tjam, zoomlevel));
     }
+
 }

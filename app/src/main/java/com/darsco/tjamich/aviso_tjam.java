@@ -1,7 +1,6 @@
 package com.darsco.tjamich;
 
 import android.content.Intent;
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -26,7 +25,8 @@ public class aviso_tjam extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
-        String str_text = "<a href=http://tjamich.gob.mx/Transparencia-2018-y-2015-2017 >Transparencia</a>";
+        //String str_text = "<a href=https://tjamich.gob.mx/Transparencia-Informacion-Oficio >Transparencia</a>";
+        String str_text = "<a href=https://consultapublicamx.plataformadetransparencia.org.mx/vut-web/faces/view/consultaPublica.xhtml?idEntidad=MTY=&idSujetoObligado=MzUzMQ==#inicio >Transparencia</a>";
         TextView link;
         link = (TextView) findViewById(R.id.txtAviso);
         link.setMovementMethod(LinkMovementMethod.getInstance());

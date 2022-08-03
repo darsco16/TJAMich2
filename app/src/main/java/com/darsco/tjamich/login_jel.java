@@ -146,7 +146,7 @@ public class login_jel extends AppCompatActivity implements LoaderCallbacks<Curs
             }
         });
 
-        Button btn3 = (Button) findViewById(R.id.btnRegisterLocal);
+        /*Button btn3 = (Button) findViewById(R.id.btnRegisterLocal);
         btn3.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -154,7 +154,7 @@ public class login_jel extends AppCompatActivity implements LoaderCallbacks<Curs
                 Intent intent = new Intent(v.getContext(), register_local.class);
                 startActivityForResult(intent, 0);
             }
-        });
+        });*/
         usuario = (EditText) findViewById(R.id.email);
         contrasena = (EditText) findViewById(R.id.password);
         //ingresar = (CardView) findViewById(R.id.email_sign_in_button);

@@ -10,6 +10,10 @@ public class UserDTO {
 
     private String email;
 
+    private String Data;
+
+    private String Token;
+
     public int getUserId() {
         return userId;
     }
@@ -22,23 +26,25 @@ public class UserDTO {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String userName) { this.userName = userName; }
+
+    public String getData() {
+        return Data;
     }
 
-    public String getPassword() {
-        return password;
+    public void setData(String Data) { this.Data = Data;}
+
+    public String getToken() {
+        return Token;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setToken(String Token) { this.Token = Token; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getPassword() { return password; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setPassword(String password) { this.password = password; }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
 }

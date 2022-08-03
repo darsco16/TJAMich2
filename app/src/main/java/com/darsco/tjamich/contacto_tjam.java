@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.maps.SupportMapFragment;
+
 public class contacto_tjam extends AppCompatActivity {
 
     @Override
@@ -81,6 +83,9 @@ public class contacto_tjam extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), maps_tjam.class);
                 startActivityForResult(intent, 0);
+                /*SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.map);
+                mapFragment.getMapAsync(this;);*/
             }
         });
     }

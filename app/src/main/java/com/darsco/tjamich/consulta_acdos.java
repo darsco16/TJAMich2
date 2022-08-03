@@ -68,8 +68,8 @@ public class consulta_acdos extends AppCompatActivity {
 
                 if(isOnline()) {
                     //String consulta = "http://tjamich.gob.mx/consultarAcdos.php?accion=acdos&expediente="+etExpediente.getText();
-                    String consulta2 = "http://tjamich.gob.mx/consultarAcdos.php?accion=exp&expediente=" + etExpediente.getText();
-                    String consulta3 = "http://tjamich.gob.mx/consultarAcdos.php?accion=area&expediente=" + etExpediente.getText();
+                    String consulta2 = "https://tjamich.gob.mx/consultarAcdos.php?accion=exp&expediente=" + etExpediente.getText();
+                    String consulta3 = "https://tjamich.gob.mx/consultarAcdos.php?accion=area&expediente=" + etExpediente.getText();
                     EnviarRecibirExp(consulta2);
                     EnviarRecibirArea(consulta3);
                     EjecutarTodo();
@@ -183,7 +183,7 @@ public class consulta_acdos extends AppCompatActivity {
         URL url = null;
 
         try{
-            url = new URL("http://tjamich.gob.mx/consultarAcdos.php?accion=acdos&expediente="+etExpediente.getText());
+            url = new URL("https://tjamich.gob.mx/consultarAcdos.php?accion=acdos&expediente="+etExpediente.getText());
 
             HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
             respuesta = conexion.getResponseCode();
